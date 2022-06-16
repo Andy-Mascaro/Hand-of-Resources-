@@ -8,8 +8,13 @@ describe('planes routes', () => {
     return setup(pool);
   });
 
-  it('should show plane name', async () => {
+  it('should show plane model', async () => {
     const res = await request(app).get('/planes');
-    expect(res.body.length).toEqual(200);
+    expect(res.body.length).toEqual(3);
+    const skyhawk = res.body.find((char) => char.id === '3');
+    expect(skyhawk).toHaveProperty('model', 'Skyhawk');
+  });
+  afterAll(() => {
+    pool.end();
   });
 });
