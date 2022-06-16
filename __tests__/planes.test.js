@@ -7,7 +7,10 @@ describe('planes routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-
+  it('should show planes detail', async () => {
+    const res = await request(app).get('/planes/2');
+    expect(res.body).toEqual(200);
+  });
   it('should show plane model', async () => {
     const res = await request(app).get('/planes');
     expect(res.body.length).toEqual(3);
