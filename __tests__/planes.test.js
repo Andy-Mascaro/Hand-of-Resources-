@@ -26,7 +26,7 @@ describe('planes routes', () => {
     expect(skyhawk).toHaveProperty('model', 'Skyhawk');
   });
 
-  it('Post /planes should create a new plane', async () => {
+  it('POST /planes should create a new plane', async () => {
     const res = await request(app).post('/planes').send({
       model: 'Jumbo',
       engine_count: 4,
@@ -49,6 +49,8 @@ describe('planes routes', () => {
   it('DELETE /planes/:id should delete a plane', async () => {
     const res = await request(app).delete('/planes/1');
     expect(res.status).toEqual(200);
+    const { body } = await request(app).get('/planes/1');
+    expect(body).toEqual(null);
   });
 
   afterAll(() => {
