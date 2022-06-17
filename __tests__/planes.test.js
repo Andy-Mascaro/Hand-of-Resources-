@@ -39,6 +39,11 @@ describe('planes routes', () => {
     expect(res.body.id).not.toBeUndefined();
   });
 
+  it('PUT /planes/:id should update plane', async () => {
+    const res = await request(app).put('/plane/3');
+    expect(res.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });
