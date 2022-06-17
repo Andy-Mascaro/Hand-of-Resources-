@@ -8,7 +8,7 @@ describe('planes routes', () => {
     return setup(pool);
   });
 
-  it('should show planes detail', async () => {
+  it('/planes:id should show planes detail', async () => {
     const res = await request(app).get('/planes/2');
     const beluga = {
       id: '2',
@@ -19,7 +19,7 @@ describe('planes routes', () => {
     expect(res.body).toEqual(beluga);
   });
 
-  it('should show plane model', async () => {
+  it('/planes should show plane model', async () => {
     const res = await request(app).get('/planes');
     expect(res.body.length).toEqual(3);
     const skyhawk = res.body.find((char) => char.id === '3');
@@ -40,8 +40,10 @@ describe('planes routes', () => {
   });
 
   it('PUT /planes/:id should update plane', async () => {
-    const res = await request(app).put('/plane/3');
-    expect(res.status).toEqual(200);
+    const res = await request(app)
+      .put('/planes/3')
+      .send({ model: 'nighthawk' });
+    expect(res.body.model).toEqual('nighthawk');
   });
 
   afterAll(() => {
