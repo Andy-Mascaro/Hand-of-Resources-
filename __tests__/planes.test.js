@@ -27,9 +27,18 @@ describe('planes routes', () => {
   });
 
   it('Post /planes should create a new plane', async () => {
-    const res = await request(app).post('/planes');
-    expect(res.status).toEqual(200);
+    const res = await request(app).post('/planes').send({
+      model: 'Jumbo',
+      engine_count: 4,
+      maker: 'Boeing',
+    });
+
+    expect(res.body.model).toEqual('Jumbo');
+    expect(res.body.engine_count).toEqual(4);
+    expect(res.body.maker).toEqual('Boeing');
+    expect(res.body.id).not.toBeUndefined();
   });
+
   afterAll(() => {
     pool.end();
   });
