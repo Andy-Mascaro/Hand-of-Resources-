@@ -42,8 +42,9 @@ describe('foods routes', () => {
   });
 
   it('PUT /foods/:id should update food', async () => {
-    const resp = await request(app);
+    const resp = await request(app).put('/foods/2').send({ taste: 'Yummy' });
     expect(resp.status).toEqual(200);
+    expect(resp.body.taste).toEqual('Yummy');
   });
 
   afterAll(() => {

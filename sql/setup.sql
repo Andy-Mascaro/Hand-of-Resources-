@@ -61,7 +61,7 @@ INSERT INTO foods (
 
 VALUES
 ('Cotton Candy', 'Sweet', 'Not healthy'),
-('Peanuts', 'Salty', 'High protien'),
+('Peanuts', 'Salty', 'High protein'),
 ('Spinach', 'Earthy', 'High in fiber');
 
 INSERT INTO seasons(
