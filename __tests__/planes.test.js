@@ -25,6 +25,11 @@ describe('planes routes', () => {
     const skyhawk = res.body.find((char) => char.id === '3');
     expect(skyhawk).toHaveProperty('model', 'Skyhawk');
   });
+
+  it('Post /planes should create a new plane', async () => {
+    const res = await request(app).post('/planes');
+    expect(res.status).toEqual(200);
+  });
   afterAll(() => {
     pool.end();
   });
