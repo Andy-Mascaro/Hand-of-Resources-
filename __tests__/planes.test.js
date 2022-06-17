@@ -46,6 +46,11 @@ describe('planes routes', () => {
     expect(res.body.model).toEqual('nighthawk');
   });
 
+  it('DELETE /planes/:id should delete a plane', async () => {
+    const res = await request(app).delete('/planes/1');
+    expect(res.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });
