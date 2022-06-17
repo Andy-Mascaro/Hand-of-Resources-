@@ -16,6 +16,11 @@ describe('foods routes', () => {
     expect(cotton).toHaveProperty('name', 'Cotton Candy');
   });
 
+  it('/:id should return food detail', async () => {
+    const resp = await request(app).get('/foods/3');
+    expect(resp.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });
