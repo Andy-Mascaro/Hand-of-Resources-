@@ -19,6 +19,13 @@ describe('foods routes', () => {
   it('/:id should return food detail', async () => {
     const resp = await request(app).get('/foods/3');
     expect(resp.status).toEqual(200);
+    const spin = {
+      id: '3',
+      name: 'Spinach',
+      taste: 'Earthy',
+      healthy: 'High in fiber',
+    };
+    expect(resp.body).toEqual(spin);
   });
 
   afterAll(() => {

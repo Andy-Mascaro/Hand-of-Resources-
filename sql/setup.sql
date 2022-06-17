@@ -15,7 +15,7 @@ CREATE TABLE foods(
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR,
     taste VARCHAR,
-    heatlhy VARCHAR
+    healthy VARCHAR
 );
 
 CREATE TABLE seasons (
@@ -56,7 +56,7 @@ VALUES
 INSERT INTO foods (
     name,
     taste,
-    heatlhy
+    healthy
 )
 
 VALUES
