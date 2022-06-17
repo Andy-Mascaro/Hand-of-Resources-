@@ -28,6 +28,11 @@ describe('foods routes', () => {
     expect(resp.body).toEqual(spin);
   });
 
+  it('POST /foods should create a new food', async () => {
+    const resp = await request(app).post('/food').send();
+    expect(resp.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });
