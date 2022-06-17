@@ -47,6 +47,11 @@ describe('foods routes', () => {
     expect(resp.body.taste).toEqual('Yummy');
   });
 
+  it('DELETE /foods/:id should delete food', async () => {
+    const resp = await request(app);
+    expect(res.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });
