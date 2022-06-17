@@ -29,8 +29,16 @@ describe('foods routes', () => {
   });
 
   it('POST /foods should create a new food', async () => {
-    const resp = await request(app).post('/food').send();
+    const resp = await request(app).post('/foods').send({
+      name: 'Bread',
+      taste: 'Fluffy',
+      healthy: 'High in carbs',
+    });
     expect(resp.status).toEqual(200);
+    expect(resp.body.name).toEqual('Bread');
+    expect(resp.body.taste).toEqual('Fluffy');
+    expect(resp.body.healthy).toEqual('High in carbs');
+    expect(resp.body.id).not.toBeUndefined();
   });
 
   afterAll(() => {
