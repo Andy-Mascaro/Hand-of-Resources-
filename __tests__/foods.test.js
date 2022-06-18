@@ -48,8 +48,10 @@ describe('foods routes', () => {
   });
 
   it('DELETE /foods/:id should delete food', async () => {
-    const resp = await request(app);
-    expect(res.status).toEqual(200);
+    const resp = await request(app).delete('/foods/3');
+    expect(resp.status).toEqual(200);
+    const { body } = await request(app).get('/foods/3');
+    expect(body).toEqual(null);
   });
 
   afterAll(() => {
