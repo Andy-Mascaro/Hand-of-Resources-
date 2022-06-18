@@ -29,8 +29,16 @@ describe('stores routes', () => {
   });
 
   it('POST /stores should create a new store', async () => {
-    const resp = await request(app).post('/stores').send();
+    const resp = await request(app).post('/stores').send({
+      name: 'Big Five',
+      product: 'Sports',
+      member_ship: 'None',
+    });
     expect(resp.status).toEqual(200);
+    expect(resp.body.name).toEqual('Big Five');
+    expect(resp.body.product).toEqual('Sports');
+    expect(resp.body.member_ship).toEqual('None');
+    expect(resp.body.id).not.toBeUndefined();
   });
 
   afterAll(() => {
