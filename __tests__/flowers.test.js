@@ -41,8 +41,14 @@ describe('flowers routes', () => {
     expect(resp.body.id).not.toBeUndefined();
   });
 
-  it('PUT /foods/:id should update food', async () => {
-    const resp = await request(app).put('/flowers/3').send();
+  it('PUT /flowers/:id should update flower', async () => {
+    const resp = await request(app).put('/flowers/3').send({ color: 'Green' });
+    expect(resp.status).toEqual(200);
+    expect(resp.body.color).toEqual('Green');
+  });
+
+  it('DELETE /flowers/:id should delete a flower', async () => {
+    const resp = await request(app).delete('/flowers/1');
     expect(resp.status).toEqual(200);
   });
 
