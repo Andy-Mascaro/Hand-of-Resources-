@@ -16,6 +16,11 @@ describe('flowers routes', () => {
     expect(flower).toHaveProperty('name', 'Freesia');
   });
 
+  it('/:id should return flower detail', async () => {
+    const resp = await request(app).getById();
+    expect(resp.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });
