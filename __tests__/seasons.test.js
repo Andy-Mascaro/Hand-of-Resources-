@@ -44,6 +44,11 @@ describe('seasons routes', () => {
     expect(resp.body.id).not.toBeUndefined();
   });
 
+  it('PUT /seasons/:id should update season', async () => {
+    const resp = await request(app).put('/seasons/1');
+    expect(resp.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });
