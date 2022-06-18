@@ -41,6 +41,11 @@ describe('stores routes', () => {
     expect(resp.body.id).not.toBeUndefined();
   });
 
+  it('PUT /stores/:id should update stores', async () => {
+    const resp = await request(app).put('/stores/1').send();
+    expect(resp.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });
