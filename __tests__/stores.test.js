@@ -11,6 +11,9 @@ describe('stores routes', () => {
   it('/ should return a store names', async () => {
     const resp = await request(app).get('/stores');
     expect(resp.status).toEqual(200);
+    expect(resp.body.length).toEqual(3);
+    const old = resp.body.find((char) => char.id === '2');
+    expect(old).toHaveProperty('name', 'Old Navy');
   });
 
   afterAll(() => {
