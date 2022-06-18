@@ -50,6 +50,8 @@ describe('flowers routes', () => {
   it('DELETE /flowers/:id should delete a flower', async () => {
     const resp = await request(app).delete('/flowers/1');
     expect(resp.status).toEqual(200);
+    const { body } = await request(app).get('/flowers/1');
+    expect(body).toEqual(null);
   });
 
   afterAll(() => {
