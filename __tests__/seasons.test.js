@@ -29,6 +29,11 @@ describe('seasons routes', () => {
     expect(spring).toHaveProperty('name', 'Spring');
   });
 
+  it('POST /seasons should add new season', async () => {
+    const resp = await (await request(app).post('/seasons')).send();
+    expect(resp.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });
