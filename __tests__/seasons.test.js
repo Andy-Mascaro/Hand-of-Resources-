@@ -11,6 +11,9 @@ describe('seasons routes', () => {
   it('/seasons should show all seasons', async () => {
     const resp = await request(app).get('/seasons');
     expect(resp.status).toEqual(200);
+    expect(resp.body.length).toEqual(4);
+    const spring = resp.body.find((char) => char.id === '1');
+    expect(spring).toHaveProperty('name', 'Spring');
   });
 
   afterAll(() => {
