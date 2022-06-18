@@ -48,8 +48,10 @@ describe('stores routes', () => {
   });
 
   it('DELETE /stores/:id should delete store', async () => {
-    const resp = await request(app).delete('/store/3');
+    const resp = await request(app).delete('/stores/3');
     expect(resp.status).toEqual(200);
+    const { body } = await request(app).get('/stores/3');
+    expect(body).toEqual(null);
   });
 
   afterAll(() => {
