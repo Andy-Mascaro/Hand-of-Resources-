@@ -53,7 +53,9 @@ describe('seasons routes', () => {
   it('DELETE /seasons/:id should delete a season', async () => {
     const resp = await request(app).delete('/seasons/4');
     expect(resp.status).toEqual(200);
-  }))
+    const { body } = await request(app).get('/seasons/4');
+    expect(body).toEqual(null);
+  });
 
   afterAll(() => {
     pool.end();
