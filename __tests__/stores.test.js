@@ -17,8 +17,15 @@ describe('stores routes', () => {
   });
 
   it('/:id should return store detail', async () => {
-    const resp = await request(app).get('/stores/3');
+    const resp = await request(app).get('/stores/2');
     expect(resp.status).toEqual(200);
+    const store = {
+      id: '2',
+      name: 'Old Navy',
+      product: 'Clothes',
+      member_ship: 'No',
+    };
+    expect(resp.body).toEqual(store);
   });
 
   afterAll(() => {
