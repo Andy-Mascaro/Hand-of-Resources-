@@ -16,6 +16,11 @@ describe('stores routes', () => {
     expect(old).toHaveProperty('name', 'Old Navy');
   });
 
+  it('/:id should return store detail', async () => {
+    const resp = await request(app).get('/stores/3');
+    expect(resp.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });
