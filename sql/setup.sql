@@ -29,9 +29,10 @@ CREATE TABLE seasons (
 
 CREATE TABLE stores (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    grocery VARCHAR,
-    clothes VARCHAR,
-    sports VARCHAR
+    name VARCHAR,
+    product VARCHAR,
+    member_ship VARCHAR
+    
 );
 
 CREATE TABLE flowers (
@@ -80,15 +81,15 @@ VALUES
 ('Winter','Cold','Skiing','Ground frosts over');
 
 INSERT INTO stores (
-    grocery,
-    clothes,
-    sports
+    name,
+    product,
+    member_ship
 )
 
 VALUES 
-('Albertsons', 'Kohls', 'Big Five'),
-('Safeway', 'Old Navy', 'Play it again sports'),
-('Fred Meyers', 'Target', 'GI Joes');
+('Albertsons', 'Food', 'No'),
+('Old Navy', 'Clothes', 'No'),
+('Costco', 'Warehouse', 'Yes');
 
 INSERT INTO flowers (
     name,
