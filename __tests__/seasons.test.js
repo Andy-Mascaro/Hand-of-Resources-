@@ -30,8 +30,18 @@ describe('seasons routes', () => {
   });
 
   it('POST /seasons should add new season', async () => {
-    const resp = await (await request(app).post('/seasons')).send();
+    const resp = await request(app).post('/seasons').send({
+      name: 'Rainy',
+      temp: 'chilly',
+      fun: 'jump in puddles',
+      outside: 'muddy',
+    });
     expect(resp.status).toEqual(200);
+    expect(resp.body.name).toEqual('Rainy');
+    expect(resp.body.temp).toEqual('chilly');
+    expect(resp.body.fun).toEqual('jump in puddles');
+    expect(resp.body.outside).toEqual('muddy');
+    expect(resp.body.id).not.toBeUndefined();
   });
 
   afterAll(() => {
