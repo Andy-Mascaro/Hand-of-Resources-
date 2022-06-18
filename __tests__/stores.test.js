@@ -42,8 +42,9 @@ describe('stores routes', () => {
   });
 
   it('PUT /stores/:id should update stores', async () => {
-    const resp = await request(app).put('/stores/1').send();
+    const resp = await request(app).put('/stores/1').send({ name: 'Wowza' });
     expect(resp.status).toEqual(200);
+    expect(resp.body.name).toEqual('Wowza');
   });
 
   afterAll(() => {
