@@ -28,6 +28,11 @@ describe('stores routes', () => {
     expect(resp.body).toEqual(store);
   });
 
+  it('POST /stores should create a new store', async () => {
+    const resp = await request(app).post('/stores').send();
+    expect(resp.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });
