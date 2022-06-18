@@ -46,9 +46,14 @@ describe('seasons routes', () => {
 
   it('PUT /seasons/:id should update season', async () => {
     const resp = await request(app).put('/seasons/1').send({ fun: 'picnic' });
-    // expect(resp.status).toEqual(200);
+
     expect(resp.body.fun).toEqual('picnic');
   });
+
+  it('DELETE /seasons/:id should delete a season', async () => {
+    const resp = await request(app).delete('/seasons/4');
+    expect(resp.status).toEqual(200);
+  }))
 
   afterAll(() => {
     pool.end();
