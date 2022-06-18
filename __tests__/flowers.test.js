@@ -17,7 +17,19 @@ describe('flowers routes', () => {
   });
 
   it('/:id should return flower detail', async () => {
-    const resp = await request(app).getById();
+    const resp = await request(app).get('/flowers/1');
+    expect(resp.status).toEqual(200);
+    const flower = {
+      id: '1',
+      name: 'Gardenia',
+      color: 'White',
+      scent: 'Delicious',
+    };
+    expect(resp.body).toEqual(flower);
+  });
+
+  it('POST /flowers should create a new flower', async () => {
+    const resp = await request(app).post('/flowers').send();
     expect(resp.status).toEqual(200);
   });
 
