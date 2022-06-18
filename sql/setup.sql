@@ -20,10 +20,11 @@ CREATE TABLE foods(
 
 CREATE TABLE seasons (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    spring VARCHAR,
-    summer VARCHAR,
-    fall VARCHAR,
-    winter VARCHAR
+    name VARCHAR,
+    temp VARCHAR,
+    fun VARCHAR,
+    outside VARCHAR
+   
 );
 
 CREATE TABLE stores (
@@ -65,16 +66,18 @@ VALUES
 ('Spinach', 'Earthy', 'High in fiber');
 
 INSERT INTO seasons(
-    spring,
-    summer,
-    fall,
-    winter
+    name,
+    temp,
+    fun,
+    outside
+   
 )
 
 VALUES
-('Warm', 'Hot', 'Cool','Cold'),
-('Baseball', 'Swimming', 'Football', 'Skiing'),
-('Flowers Bloom', 'Grass dies', 'Trees drop leaves', 'Ground frosts over');
+('Spring','Warm', 'Baseball', 'Flowers bloom'),
+('Summer','Hot', 'Swimming', 'Grass dies'),
+('Fall','Cool','Football','Trees drop leaves'),
+('Winter','Cold','Skiing','Ground frosts over');
 
 INSERT INTO stores (
     grocery,
