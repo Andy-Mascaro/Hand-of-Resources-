@@ -41,6 +41,11 @@ describe('flowers routes', () => {
     expect(resp.body.id).not.toBeUndefined();
   });
 
+  it('PUT /foods/:id should update food', async () => {
+    const resp = await request(app).put('/flowers/3').send();
+    expect(resp.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });
