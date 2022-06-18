@@ -8,6 +8,11 @@ describe('seasons routes', () => {
     return setup(pool);
   });
 
+  it('/seasons:id should show one season detail', async () => {
+    const resp = await request(app).get('/seasons/2');
+    expect(resp.status).toEqual(200);
+  });
+
   it('/seasons should show all seasons', async () => {
     const resp = await request(app).get('/seasons');
     expect(resp.status).toEqual(200);
