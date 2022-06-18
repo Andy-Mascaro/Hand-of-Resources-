@@ -45,8 +45,9 @@ describe('seasons routes', () => {
   });
 
   it('PUT /seasons/:id should update season', async () => {
-    const resp = await request(app).put('/seasons/1');
-    expect(resp.status).toEqual(200);
+    const resp = await request(app).put('/seasons/1').send({ fun: 'picnic' });
+    // expect(resp.status).toEqual(200);
+    expect(resp.body.fun).toEqual('picnic');
   });
 
   afterAll(() => {
