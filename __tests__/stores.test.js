@@ -3,13 +3,16 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
-describe('backend-express-template routes', () => {
+describe('stores routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it('example test - delete me!', () => {
-    expect(1).toEqual(1);
+
+  it('/ should return a store names', async () => {
+    const resp = await request(app).get('/stores');
+    expect(resp.status).toEqual(200);
   });
+
   afterAll(() => {
     pool.end();
   });
