@@ -47,6 +47,11 @@ describe('stores routes', () => {
     expect(resp.body.name).toEqual('Wowza');
   });
 
+  it('DELETE /stores/:id should delete store', async () => {
+    const resp = await request(app).delete('/store/3');
+    expect(resp.status).toEqual(200);
+  });
+
   afterAll(() => {
     pool.end();
   });
