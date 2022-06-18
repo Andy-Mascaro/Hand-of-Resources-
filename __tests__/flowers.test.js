@@ -29,8 +29,16 @@ describe('flowers routes', () => {
   });
 
   it('POST /flowers should create a new flower', async () => {
-    const resp = await request(app).post('/flowers').send();
+    const resp = await request(app).post('/flowers').send({
+      name: 'Rose',
+      color: 'Red',
+      scent: 'Love',
+    });
     expect(resp.status).toEqual(200);
+    expect(resp.body.name).toEqual('Rose');
+    expect(resp.body.color).toEqual('Red');
+    expect(resp.body.scent).toEqual('Love');
+    expect(resp.body.id).not.toBeUndefined();
   });
 
   afterAll(() => {
